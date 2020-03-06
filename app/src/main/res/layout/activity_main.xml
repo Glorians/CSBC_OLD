@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager"
         android:layout_width="0dp"
@@ -29,7 +28,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:tabMode="scrollable"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" /><![CDATA[
+
+=======
+    >>>>>>> origin/Alex
 
 
+
+
+
+    ]]>
 </androidx.constraintlayout.widget.ConstraintLayout>

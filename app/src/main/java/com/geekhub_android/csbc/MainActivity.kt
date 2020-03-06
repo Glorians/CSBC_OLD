@@ -6,6 +6,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.geekhub_android.csbc.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import android.util.Log
+import android.widget.TextView
+import com.geekhub_android.csbc.Model.Group
+import com.geekhub_android.csbc.Model.Subject
+import com.geekhub_android.csbc.Model.Teacher
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,14 +22,10 @@ class MainActivity : AppCompatActivity() {
         initViewPager2WithFragments()
     }
 
-
-
     private fun initViewPager2WithFragments() {
-
         var viewPager: ViewPager2 = findViewById(R.id.viewpager)
         var adapter = ExampleStateAdapter(supportFragmentManager, lifecycle)
         viewPager.adapter=adapter
-
         var tabLayout:TabLayout = findViewById(R.id.tablayout)
         var names:ArrayList<String> = arrayListOf("Понеділок","Вівторок","Середа","Четвер","Пятниця","Субота")
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
@@ -33,6 +34,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-
 }
+
+
