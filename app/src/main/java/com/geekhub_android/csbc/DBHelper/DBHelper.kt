@@ -1,60 +1,61 @@
 package com.geekhub_android.csbc.DBHelper
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.geekhub_android.csbc.Model.Subject
+import android.provider.BaseColumns
+import java.io.*
+import java.sql.SQLException
 
-class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VER) {
 
-    override fun onCreate(db: SQLiteDatabase?) {
-        val CREATE_TABLE_QUERY: String =
-            ("CREATE TABLE $TABLE_NAME ($COL_ID INTEGER PRIMARY KEY, $COL_NAME TEXT, " +
-                    "$COL_CLASSROOM INTEGER PRIMARY KEY, $COL_TIME TEXT, $COL_TEACHER TEXT, $COL_TYPE TEXT)")
-        db!!.execSQL(CREATE_TABLE_QUERY)
+object FeedEntry : BaseColumns {
+    const val TABLE_NAME = "subject"
+    const val COLUMN_PARITY = "parity"
+    const val COLUMN_NAME = "name"
+    const val COLUMN_CLASSROOM = "classroom"
+    const val COLUMN_NUMBER = "number"
+    const val COLUMN_TEACHER = "teacher"
+    const val COLUMN_TYPE = "type"
+    const val COLUMN_DAY = "day"
+}
+
+class ReaderDBHelper(context: Context) : SQLiteOpenHelper( context,
+    DATABASE_NAME, null, DATABASE_VERSION) {
+
+
+    override fun onCreate(db: SQLiteDatabase) {
+        db.execSQL(SQL_CREATE_ENTRIES)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db!!.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
-        onCreate(db)
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL(SQL_DELETE_ENTRIES)
     }
 
-    //CRUD
-    val allSubject: List<Subject>
-        @SuppressLint("Recycle")
-        get() {
-            val lstSubject = ArrayList<Subject>()
-            val selectQuery = "SELECT * FROM $TABLE_NAME"
-            val db = this.writableDatabase
-            val cursor = db.rawQuery(selectQuery, null)
-            if (cursor.moveToFirst()) {
-                do {
-                    val subject = Subject(
-                        cursor.getInt(cursor.getColumnIndex(COL_ID)),
-                        cursor.getString(cursor.getColumnIndex(COL_NAME)),
-                        cursor.getInt(cursor.getColumnIndex(COL_CLASSROOM)),
-                        cursor.getString(cursor.getColumnIndex(COL_TIME)),
-                        cursor.getString(cursor.getColumnIndex(COL_TEACHER)),
-                        cursor.getString(cursor.getColumnIndex(COL_TYPE))
-                    )
-                    lstSubject.add(subject)
-                } while (cursor.moveToNext())
-            }
-            return lstSubject
-        }
+    override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        onUpgrade(db, oldVersion, newVersion)
+    }
+
 
     companion object {
-        private const val DATABASE_VER = 1
-        private const val DATABASE_NAME = "CSBC.db"
+        const val DATABASE_VERSION = 1
+        const val DATABASE_NAME = "Main.db"
 
-        //Table
-        private const val TABLE_NAME = "Subject"
-        private const val COL_ID = "Id"
-        private const val COL_NAME = "Name"
-        private const val COL_CLASSROOM = "Number"
-        private const val COL_TIME = "Time"
-        private const val COL_TEACHER = "Teacher"
-        private const val COL_TYPE = "Type"
+        // CREATE TABLE
+        private const val SQL_CREATE_ENTRIES =
+            "CREATE TABLE ${FeedEntry.TABLE_NAME} (" +          //TABLE NAME
+                    "${BaseColumns._ID} INTEGER PRIMARY KEY, " + //ID
+                    "${FeedEntry.COLUMN_PARITY} INTEGER, " +    //PARITY
+                    "${FeedEntry.COLUMN_NAME} TEXT, " +         //NAME
+                    "${FeedEntry.COLUMN_CLASSROOM} INTEGER, " + //CLASSROOM
+                    "${FeedEntry.COLUMN_NUMBER} INTEGER, " +    //NUMBER
+                    "${FeedEntry.COLUMN_TEACHER} TEXT, " +      //TEACHER
+                    "${FeedEntry.COLUMN_TYPE} TEXT, " +         //TYPE
+                    "${FeedEntry.COLUMN_DAY} INTEGER)"           //DAY
+
+
+        // DELETE TABLE
+        private const val SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS ${FeedEntry.TABLE_NAME}"
     }
+
 }
