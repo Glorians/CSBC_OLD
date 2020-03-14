@@ -1,5 +1,6 @@
 package com.geekhub_android.csbc.DBHelper
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -25,6 +26,7 @@ class ReaderDBHelper(context: Context) : SQLiteOpenHelper( context,
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(SQL_CREATE_ENTRIES)
+        onCursor(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -33,6 +35,11 @@ class ReaderDBHelper(context: Context) : SQLiteOpenHelper( context,
 
     override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         onUpgrade(db, oldVersion, newVersion)
+    }
+
+    @SuppressLint("Recycle")
+    fun onCursor (db: SQLiteDatabase) {
+
     }
 
 
