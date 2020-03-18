@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.geekhub_android.csbc.DBHelper.ReaderDBHelper
-import com.geekhub_android.csbc.DBHelper.FeedEntry
-import com.geekhub_android.csbc.Feed
+import com.geekhub_android.csbc.DBHelper.SubjectDB
+import com.geekhub_android.csbc.Model.Subject
 import com.geekhub_android.csbc.R
 import kotlinx.android.synthetic.main.fragment_monday.*
 
@@ -50,53 +50,53 @@ class FragmentMonday(context: Context) : Fragment() {
         val db = dbHelper.writableDatabase
 
         val values = ContentValues().apply {
-            put(FeedEntry.COLUMN_PARITY, 1)
-            put(FeedEntry.COLUMN_NAME, "Програмирование")
-            put(FeedEntry.COLUMN_CLASSROOM, 216)
-            put(FeedEntry.COLUMN_NUMBER, 4)
-            put(FeedEntry.COLUMN_TEACHER, "Стасик")
-            put(FeedEntry.COLUMN_TYPE, "Лекция")
-            put(FeedEntry.COLUMN_DAY, 1)
+            put(SubjectDB.COLUMN_PARITY, 1)
+            put(SubjectDB.COLUMN_NAME, "Програмирование")
+            put(SubjectDB.COLUMN_CLASSROOM, 216)
+            put(SubjectDB.COLUMN_NUMBER, 4)
+            put(SubjectDB.COLUMN_TEACHER, "Стасик")
+            put(SubjectDB.COLUMN_TYPE, "Лекция")
+            put(SubjectDB.COLUMN_DAY, 1)
         }
 
-        val newRowId = db?.insert(FeedEntry.TABLE_NAME, null, values)
+        val newRowId = db?.insert(SubjectDB.TABLE_NAME, null, values)
     }
 
-    private fun workCursor(db: SQLiteDatabase): MutableList<Feed> {
+    private fun workCursor(db: SQLiteDatabase): MutableList<Subject> {
 
         val projection = arrayOf(
             BaseColumns._ID,
-            FeedEntry.COLUMN_PARITY,
-            FeedEntry.COLUMN_NAME,
-            FeedEntry.COLUMN_CLASSROOM,
-            FeedEntry.COLUMN_NUMBER,
-            FeedEntry.COLUMN_TEACHER,
-            FeedEntry.COLUMN_TYPE,
-            FeedEntry.COLUMN_DAY
+            SubjectDB.COLUMN_PARITY,
+            SubjectDB.COLUMN_NAME,
+            SubjectDB.COLUMN_CLASSROOM,
+            SubjectDB.COLUMN_NUMBER,
+            SubjectDB.COLUMN_TEACHER,
+            SubjectDB.COLUMN_TYPE,
+            SubjectDB.COLUMN_DAY
         )
 
-        val selection = "${FeedEntry.COLUMN_NAME} = ?"
+        val selection = "${SubjectDB.COLUMN_NAME} = ?"
         val selectionArgs = arrayOf("My Name")
-        val sortOrder = "${FeedEntry.COLUMN_PARITY} DESC"
+        val sortOrder = "${SubjectDB.COLUMN_PARITY} DESC"
 
         val cursor = db.query(
-            FeedEntry.TABLE_NAME,
+            SubjectDB.TABLE_NAME,
             null, null, null, null, null, null
         )
 
-        val items = mutableListOf<Feed>()
+        val items = mutableListOf<Subject>()
 
         with(cursor) {
             while (moveToNext()) {
                 val itemId = getLong(getColumnIndexOrThrow(BaseColumns._ID))
-                val parity = getInt(getColumnIndexOrThrow(FeedEntry.COLUMN_PARITY))
-                val name = getString(getColumnIndexOrThrow(FeedEntry.COLUMN_NAME))
-                val classroom = getInt(getColumnIndexOrThrow(FeedEntry.COLUMN_CLASSROOM))
-                val number = getInt(getColumnIndexOrThrow(FeedEntry.COLUMN_NUMBER))
-                val teacher = getString(getColumnIndexOrThrow(FeedEntry.COLUMN_TEACHER))
-                val type = getString(getColumnIndexOrThrow(FeedEntry.COLUMN_TYPE))
-                val day = getInt(getColumnIndexOrThrow(FeedEntry.COLUMN_DAY))
-                val feed = Feed(itemId, parity, name, classroom, number, teacher, type, day)
+                val parity = getInt(getColumnIndexOrThrow(SubjectDB.COLUMN_PARITY))
+                val name = getString(getColumnIndexOrThrow(SubjectDB.COLUMN_NAME))
+                val classroom = getInt(getColumnIndexOrThrow(SubjectDB.COLUMN_CLASSROOM))
+                val number = getInt(getColumnIndexOrThrow(SubjectDB.COLUMN_NUMBER))
+                val teacher = getString(getColumnIndexOrThrow(SubjectDB.COLUMN_TEACHER))
+                val type = getString(getColumnIndexOrThrow(SubjectDB.COLUMN_TYPE))
+                val day = getInt(getColumnIndexOrThrow(SubjectDB.COLUMN_DAY))
+                val feed = Subject(itemId, parity, name, classroom, number, teacher, type, day)
                 items.add(feed)
             }
         }

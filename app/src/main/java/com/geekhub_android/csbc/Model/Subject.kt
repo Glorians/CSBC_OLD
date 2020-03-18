@@ -1,12 +1,16 @@
 package com.geekhub_android.csbc.Model
 
-data class Subject(
-    val id: Int,
-    val name: String,
-    val classroom: Int,
-    val time: String,
-    val teacher: String,
-    val type: String
+import com.google.firebase.database.IgnoreExtraProperties
 
+@IgnoreExtraProperties
+data class Subject(
+    var id: Long? = 0,
+    var parity: Int? = 0,
+    var name: String? = "",
+    var classroom: Int? = 0,
+    var number: Int? = 0,
+    var teacher: String? = "",
+    var type: String? = "",
+    var day: Int? = 0
 )
 
