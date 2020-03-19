@@ -1,11 +1,17 @@
 package com.geekhub_android.csbc
 
+import android.annotation.TargetApi
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
-import com.geekhub_android.csbc.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+
+import java.text.SimpleDateFormat
+
+import java.util.*
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    @TargetApi(Build.VERSION_CODES.O)
     private fun initViewPager2WithFragments() {
 
         var viewPager: ViewPager2 = findViewById(R.id.viewpager)
@@ -26,8 +33,28 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter=adapter
 
         var tabLayout:TabLayout = findViewById(R.id.tablayout)
-        var names:ArrayList<String> = arrayListOf("Понеділок","Вівторок","Середа","Четвер","Пятниця","Субота")
+        var names = mutableListOf<String>("Today")
+
+        val instance = Calendar.getInstance()
+        fun splitData (data: String): String {
+            var result = ""
+            val list = data.split(" ")
+            for (i in 0..2) {
+                result += list[i] + " "
+            }
+            return result
+        }
+
+        for (i in 1..6) {
+            instance.add(Calendar.DAY_OF_WEEK, 1)
+
+
+            names.add(splitData( instance.time.toString()))
+                }
+
+
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+
             tab.text = names[position]
         }.attach()
 
