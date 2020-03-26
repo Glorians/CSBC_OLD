@@ -33,4 +33,5 @@
         app:tabMode="scrollable"
         app:tabTextColor="#423131"
         tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

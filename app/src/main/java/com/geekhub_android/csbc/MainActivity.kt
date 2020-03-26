@@ -1,13 +1,18 @@
 package com.geekhub_android.csbc
 
+
 import ViewPager2.ExampleStateAdapter
 import android.annotation.TargetApi
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
+import android.content.ContentValues
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import androidx.viewpager2.widget.ViewPager2
+import com.geekhub_android.csbc.DBHelper.ReaderDBHelper
+import com.geekhub_android.csbc.DBHelper.SubjectDB
 import com.geekhub_android.csbc.Model.Subject
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -25,6 +30,7 @@ class MainActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         initViewPager2WithFragments()
 
 
@@ -35,6 +41,49 @@ class MainActivity() : AppCompatActivity() {
 //
 //        // Create a new user with a first and last name
 //// Add a new document with a generated ID
+
+
+//        val db = FirebaseFirestore.getInstance()
+
+
+        fun dbWork(context: Context) {
+            val dbHelper = ReaderDBHelper(context)
+            val db = dbHelper.writableDatabase
+
+            val values = ContentValues().apply {
+                put(SubjectDB.COLUMN_PARITY, 1)
+                put(SubjectDB.COLUMN_NAME, "Програмирование")
+                put(SubjectDB.COLUMN_CLASSROOM, 216)
+                put(SubjectDB.COLUMN_NUMBER, 4)
+                put(SubjectDB.COLUMN_TEACHER, "Стасик")
+                put(SubjectDB.COLUMN_TYPE, "Лекция")
+                put(SubjectDB.COLUMN_DAY, 1)
+            }
+
+            val newRowId = db?.insert(SubjectDB.TABLE_NAME, null, values)
+        }
+//        dbWork(this)
+
+        fun dbDelete(context: Context) {
+            val dbHelper = ReaderDBHelper(context)
+            val db = dbHelper.writableDatabase
+
+            dbHelper.onDowngrade(db, 1, 2)
+
+        }
+
+
+
+
+//        val groups: MutableMap<String, Any> = HashMap()
+//        groups["name"] = "1П-16"
+//        groups["subgroup"] = "A"
+
+        // Create a new user with a first and last name
+
+
+// Add a new document with a generated ID
+
 //        db.collection("groups")
 //            .add(groups)
 //            .addOnSuccessListener { documentReference ->
@@ -44,6 +93,8 @@ class MainActivity() : AppCompatActivity() {
 //                )
 //            }
 //            .addOnFailureListener { e -> Log.w("TEST", "Error adding document", e) }
+
+
 
 
         val subjectListener = object : ValueEventListener {
