@@ -19,7 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 
 class MainActivity() : AppCompatActivity() {
-    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,36 +28,23 @@ class MainActivity() : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
 
 
-        val groups: MutableMap<String, Any> = HashMap()
-        groups["name"] = "1П-16"
-        groups["subgroup"] = "A"
+//        val groups: MutableMap<String, Any> = HashMap()
+//        groups["name"] = "1П-16"
+//        groups["subgroup"] = "A"
 
         // Create a new user with a first and last name
 
 
 // Add a new document with a generated ID
-        db.collection("groups")
-            .add(groups)
-            .addOnSuccessListener { documentReference ->
-                Log.d(
-                    "TEST",
-                    "DocumentSnapshot added with ID: " + documentReference.id
-                )
-            }
-            .addOnFailureListener { e -> Log.w("TEST", "Error adding document", e) }
-
-
-
-
-
-
-
-
-
-
-
-
-
+//        db.collection("groups")
+//            .add(groups)
+//            .addOnSuccessListener { documentReference ->
+//                Log.d(
+//                    "TEST",
+//                    "DocumentSnapshot added with ID: " + documentReference.id
+//                )
+//            }
+//            .addOnFailureListener { e -> Log.w("TEST", "Error adding document", e) }
 
 
 

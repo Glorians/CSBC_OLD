@@ -5,10 +5,13 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.provider.BaseColumns
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.geekhub_android.csbc.Adapters.AdapterSubject
 import com.geekhub_android.csbc.DBHelper.ReaderDBHelper
 import com.geekhub_android.csbc.DBHelper.SubjectDB
 import com.geekhub_android.csbc.Model.Subject
@@ -32,17 +35,19 @@ class FragmentMonday(context: Context) : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        start(cont)
+        val listSubject = start(cont)
+        recyclerviewSubject.layoutManager = LinearLayoutManager(context)
+        recyclerviewSubject.adapter = AdapterSubject(listSubject)
     }
 
 
-    private fun start(context: Context) {
+    private fun start(context: Context): MutableList<Subject> {
         val dbHelper = ReaderDBHelper(context)
         val db = dbHelper.writableDatabase
         dbWork(context)
         val result = workCursor(db)
-
-        cool.text = result[0].toString()
+        Log.d("RESULT SIZE ", result.size.toString())
+        return result
     }
 
     private fun dbWork(context: Context) {
