@@ -1,6 +1,6 @@
 package com.geekhub_android.csbc
 
-import ViewPager2.ExampleStateAdapter
+import com.geekhub_android.csbc.ViewPager2.ExampleStateAdapter
 import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
