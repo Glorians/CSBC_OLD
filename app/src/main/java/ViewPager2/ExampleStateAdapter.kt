@@ -1,4 +1,4 @@
-package com.geekhub_android.csbc
+package ViewPager2
 
 import android.content.Context
 import androidx.fragment.app.Fragment

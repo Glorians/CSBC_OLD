@@ -1,11 +1,12 @@
 package com.geekhub_android.csbc
 
+import ViewPager2.ExampleStateAdapter
 import android.annotation.TargetApi
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import androidx.viewpager2.widget.ViewPager2
 import com.geekhub_android.csbc.Model.Subject
 import com.google.android.material.tabs.TabLayout
@@ -14,8 +15,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_main.*
 
 import java.util.*
 
@@ -29,22 +28,25 @@ class MainActivity() : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initViewPager2WithFragments()
 
-        val db = FirebaseFirestore.getInstance()
-        val groups: MutableMap<String, Any> = HashMap()
-        groups["name"] = "1П-16"
-        groups["subgroup"] = "A"
 
-        // Create a new user with a first and last name
-// Add a new document with a generated ID
-        db.collection("groups")
-            .add(groups)
-            .addOnSuccessListener { documentReference ->
-                Log.d(
-                    "TEST",
-                    "DocumentSnapshot added with ID: " + documentReference.id
-                )
-            }
-            .addOnFailureListener { e -> Log.w("TEST", "Error adding document", e) }
+
+
+//        val db = FirebaseFirestore.getInstance()
+//        val groups: MutableMap<String, Any> = HashMap()
+//        groups["name"] = "1П-16"
+//        groups["subgroup"] = "A"
+//
+//        // Create a new user with a first and last name
+//// Add a new document with a generated ID
+//        db.collection("groups")
+//            .add(groups)
+//            .addOnSuccessListener { documentReference ->
+//                Log.d(
+//                    "TEST",
+//                    "DocumentSnapshot added with ID: " + documentReference.id
+//                )
+//            }
+//            .addOnFailureListener { e -> Log.w("TEST", "Error adding document", e) }
 
 
         val subjectListener = object : ValueEventListener {
@@ -65,7 +67,11 @@ class MainActivity() : AppCompatActivity() {
     @TargetApi(Build.VERSION_CODES.O)
     private fun initViewPager2WithFragments() {
         var viewPager: ViewPager2 = findViewById(R.id.viewpager)
-        var adapter = ExampleStateAdapter(supportFragmentManager, lifecycle, this)
+        var adapter = ExampleStateAdapter(
+            supportFragmentManager,
+            lifecycle,
+            this
+        )
         viewPager.adapter = adapter
 
         var tabLayout:TabLayout = findViewById(R.id.tablayout)
@@ -81,7 +87,6 @@ class MainActivity() : AppCompatActivity() {
             }
             return result
         }
-
         for (i in 1..6) {
             instance.add(Calendar.DAY_OF_WEEK, 1)
             names.add(splitData( instance.time.toString()))
@@ -91,9 +96,6 @@ class MainActivity() : AppCompatActivity() {
             tab.text = names[position]
         }.attach()
     }
-
-
-
 }
 
 

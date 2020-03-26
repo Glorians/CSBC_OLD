@@ -42,7 +42,7 @@ class FragmentMonday(context: Context) : Fragment() {
         dbWork(context)
         val result = workCursor(db)
 
-        cool.text = result[0].toString()
+        //cool.text = result[0].toString()
     }
 
     private fun dbWork(context: Context) {
