@@ -1,12 +1,15 @@
 package com.geekhub_android.csbc
 
 
+import android.content.ContentValues
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.geekhub_android.csbc.DBHelper.ReaderDBHelper
+import com.geekhub_android.csbc.DBHelper.SubjectDB
 import com.geekhub_android.csbc.Model.Subject
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -25,7 +28,36 @@ class MainActivity() : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initViewPager2WithFragments(this)
 
-        val db = FirebaseFirestore.getInstance()
+//        val db = FirebaseFirestore.getInstance()
+
+
+        fun dbWork(context: Context) {
+            val dbHelper = ReaderDBHelper(context)
+            val db = dbHelper.writableDatabase
+
+            val values = ContentValues().apply {
+                put(SubjectDB.COLUMN_PARITY, 1)
+                put(SubjectDB.COLUMN_NAME, "Програмирование")
+                put(SubjectDB.COLUMN_CLASSROOM, 216)
+                put(SubjectDB.COLUMN_NUMBER, 4)
+                put(SubjectDB.COLUMN_TEACHER, "Стасик")
+                put(SubjectDB.COLUMN_TYPE, "Лекция")
+                put(SubjectDB.COLUMN_DAY, 1)
+            }
+
+            val newRowId = db?.insert(SubjectDB.TABLE_NAME, null, values)
+        }
+//        dbWork(this)
+
+        fun dbDelete(context: Context) {
+            val dbHelper = ReaderDBHelper(context)
+            val db = dbHelper.writableDatabase
+
+            dbHelper.onDowngrade(db, 1, 2)
+
+        }
+
+
 
 
 //        val groups: MutableMap<String, Any> = HashMap()

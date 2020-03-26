@@ -44,28 +44,11 @@ class FragmentMonday(context: Context) : Fragment() {
     private fun start(context: Context): MutableList<Subject> {
         val dbHelper = ReaderDBHelper(context)
         val db = dbHelper.writableDatabase
-        dbWork(context)
         val result = workCursor(db)
         Log.d("RESULT SIZE ", result.size.toString())
         return result
     }
 
-    private fun dbWork(context: Context) {
-        val dbHelper = ReaderDBHelper(context)
-        val db = dbHelper.writableDatabase
-
-        val values = ContentValues().apply {
-            put(SubjectDB.COLUMN_PARITY, 1)
-            put(SubjectDB.COLUMN_NAME, "Програмирование")
-            put(SubjectDB.COLUMN_CLASSROOM, 216)
-            put(SubjectDB.COLUMN_NUMBER, 4)
-            put(SubjectDB.COLUMN_TEACHER, "Стасик")
-            put(SubjectDB.COLUMN_TYPE, "Лекция")
-            put(SubjectDB.COLUMN_DAY, 1)
-        }
-
-        val newRowId = db?.insert(SubjectDB.TABLE_NAME, null, values)
-    }
 
     private fun workCursor(db: SQLiteDatabase): MutableList<Subject> {
 
