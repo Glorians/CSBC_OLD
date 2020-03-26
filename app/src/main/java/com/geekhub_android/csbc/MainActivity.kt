@@ -5,21 +5,11 @@ import ViewPager2.ExampleStateAdapter
 import android.annotation.TargetApi
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
-import android.content.ContentValues
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
 import androidx.viewpager2.widget.ViewPager2
-import com.geekhub_android.csbc.DBHelper.ReaderDBHelper
-import com.geekhub_android.csbc.DBHelper.SubjectDB
-import com.geekhub_android.csbc.Model.Subject
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.getValue
+
 
 import java.util.*
 
