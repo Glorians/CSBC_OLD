@@ -1,14 +1,18 @@
-package com.geekhub_android.csbc
+package com.geekhub_android.csbc.Activity
 
 import com.geekhub_android.csbc.ViewPager2.ExampleStateAdapter
 import android.annotation.TargetApi
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import com.geekhub_android.csbc.AddSubject
+import com.geekhub_android.csbc.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.activity_teacher.*
 import java.util.*
 
 class TeacherActivity : AppCompatActivity() {
@@ -18,6 +22,9 @@ class TeacherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher)
         initViewPager2WithFragments(cont)
+        btnOpenActivityAddSubject.setOnClickListener{
+
+        }
     }
 
 

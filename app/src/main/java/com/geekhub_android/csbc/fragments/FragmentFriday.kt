@@ -14,7 +14,7 @@ class FragmentFriday(): Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragmant_thursday,container,false)
+        val view = inflater.inflate(R.layout.fragment_friday,container,false)
         return view
     }
 }

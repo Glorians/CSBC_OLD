@@ -1,4 +1,4 @@
-package com.geekhub_android.csbc
+package com.geekhub_android.csbc.Activity
 
 import com.geekhub_android.csbc.ViewPager2.ExampleStateAdapter
 import android.annotation.TargetApi
@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import com.geekhub_android.csbc.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.*
