@@ -13,11 +13,11 @@ class ExampleStateAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle
 
     var fragments:ArrayList<Fragment> = arrayListOf(
         FragmentMonday(context),
-        FragmentTuesday(),
-        FragmentWednesday(),
-        FragmentThursday(),
-        FragmentFriday(),
-        FragmentSaturday()
+        FragmentTuesday(context),
+        FragmentWednesday(context),
+        FragmentThursday(context),
+        FragmentFriday(context),
+        FragmentSaturday(context)
     )
     override fun getItemCount(): Int {
        return fragments.size
