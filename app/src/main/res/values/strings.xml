@@ -3,9 +3,6 @@
     <string name="activity_addSubject_Headline">Добавити предмет</string>
     <string name="activity_addSubject_SelectGroup">Виберіть группу</string>
     <string name="activity_addSubject_SelectSubgroup">Виберіть підгруппу</string>
-    <string name="new_game" />
-    <string name="help">help</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.geekhub_android.csbc.Activity.TeacherActivity">
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="350dp"
+        android:translationZ="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnOpenActivityAddSubject"
         android:layout_width="78dp"
@@ -19,6 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:foreground="@drawable/ic_add_white_56dp"
         android:foregroundGravity="center"
+        android:translationZ="5dp"
         />
 
     <androidx.viewpager2.widget.ViewPager2

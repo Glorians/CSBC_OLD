@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager2.widget.ViewPager2
 import com.geekhub_android.csbc.AddSubject
 import com.geekhub_android.csbc.R
@@ -21,8 +22,13 @@ class TeacherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher)
+
         initViewPager2WithFragments(cont)
+
         btnOpenActivityAddSubject.setOnClickListener{
+            Log.d("ClickBTN", "CLICK!!!")
+            val intent = Intent(this, AddSubject::class.java)
+            startActivity(intent)
 
         }
     }
