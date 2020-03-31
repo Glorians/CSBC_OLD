@@ -6,6 +6,10 @@ import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import androidx.core.view.MenuItemCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -52,4 +56,18 @@ private fun initViewPager2WithFragments(context:Context) {
         tab.text = names[position]
     }.attach()
 }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.main, menu)
+        val item = menu!!.findItem(R.id.spinner)
+        val spinner = MenuItemCompat.getActionView(item) as Spinner
+        val adapter = ArrayAdapter.createFromResource(this,
+            R.array.spinner_list_item_array, R.layout.support_simple_spinner_dropdown_item)
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+
+        spinner.adapter = adapter
+        return true
+    }
+
+
 }

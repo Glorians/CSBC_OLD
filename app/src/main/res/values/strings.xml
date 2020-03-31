@@ -5,4 +5,8 @@
     <string name="activity_addSubject_SelectSubgroup">Виберіть підгруппу</string>
     <string name="new_game" />
     <string name="help">help</string>
-</resources>
+    <string-array name="spinner_list_item_array">
+        <item>Teacher</item>
+        <item>Student</item>
+
+    </string-array></resources>

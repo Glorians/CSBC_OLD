@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MotionEvent
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
+import androidx.core.view.MenuItemCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -45,14 +48,7 @@ class MainActivity() : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.main, menu)
-        return true
 
-    }
-
-//var imageView : ImageView = findViewById(R.id.imageView4)
 
 }
 
