@@ -7,25 +7,68 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.*
 
-class TeacherActivity : AppCompatActivity() {
-  private val cont = this
+class TeacherActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
+    private val cont = this
+
+    lateinit var toolbar: Toolbar
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher)
         initViewPager2WithFragments(cont)
+
+
+        //menu Navigation Drawer
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar, 0, 0
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        navView.setNavigationItemSelectedListener(this)
+
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_teacher -> {
+                Toast.makeText(this, "Teacher clicked", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_student -> {
+                Toast.makeText(this, "Student clicked", Toast.LENGTH_SHORT).show()
+            }
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+
+
     }
 
 
-@TargetApi(Build.VERSION_CODES.O)
+
+    @TargetApi(Build.VERSION_CODES.O)
 private fun initViewPager2WithFragments(context:Context) {
     var viewPager: ViewPager2 = findViewById(R.id.viewpager)
     var adapter = ExampleStateAdapter(

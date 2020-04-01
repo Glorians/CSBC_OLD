@@ -5,16 +5,24 @@ import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity() : AppCompatActivity() {
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,36 +30,15 @@ class MainActivity() : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button1.setOnClickListener {
-
             val intent = Intent(this, TeacherActivity::class.java)
             startActivity(intent)
-
-//            fun buttonEffect(button: View) {
-//                button.setOnTouchListener { v, event ->
-//                    when (event.action) {
-//                        MotionEvent.ACTION_DOWN -> {
-//                            v.background.setColorFilter(-0x1f0b8adf, PorterDuff.Mode.SRC_ATOP)
-//                            v.invalidate()
-//                        }
-//                        MotionEvent.ACTION_UP -> {
-//                            v.background.clearColorFilter()
-//                            v.invalidate()
-//                        }
-//                    }
-//                    false
-//                }
-//            }
         }
+
         button2.setOnClickListener {
             val intent = Intent(this, StudentActivity::class.java)
             startActivity(intent)
         }
+
     }
 
-
-
 }
-
-
-
-
