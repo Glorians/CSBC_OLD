@@ -7,6 +7,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionMenuTextColor">@color/colorPrimaryDark</item>
+        <item name="android:spinnerDropDownItemStyle">@style/YourCustomDropDownItemStyle</item>
+
+    </style>
+      <!-- Spinner menu-->
+    <style name="YourCustomDropDownItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textAppearance">@style/YourCustomDropDownItemTextStyle</item>
+    </style>
+    <style name="YourCustomDropDownItemTextStyle" parent="@android:style/Widget">
     </style>
 
     <style name="btn_material_design" parent="Theme.AppCompat.Light">

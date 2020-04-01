@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/about_us"
-        android:title="About us" />
+
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="About us"
+        android:id="@+id/about_us"/>
+
     <item android:title="Title"
         android:id="@+id/title"/>
-    <group android:id="@+id/menu_items"/>
-       <item android:title="item1"
-           android:id="@+id/item1"/>
-    <item android:title="item2"
-        android:id="@+id/item2"/>
 
+    <item
+        android:title="ActionBar Spinner"
+        android:id="@+id/spinner"
+        app:actionViewClass="android.widget.Spinner"
+        android:background="#ff00"
+        app:showAsAction="always" />
 
 </menu>

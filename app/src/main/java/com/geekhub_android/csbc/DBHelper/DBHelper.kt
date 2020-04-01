@@ -31,7 +31,7 @@ object Teacher : BaseColumns {
     const val COLUMN_STATUS = "status"
 }
 
-class ReaderDBHelper(context: Context) : SQLiteOpenHelper( context,
+class ReaderDBHelper(context: Context?) : SQLiteOpenHelper( context,
     DATABASE_NAME, null, DATABASE_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {

@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img1"
+    android:background="@drawable/ladsc"
     android:orientation="vertical"
     android:screenOrientation="landscape">
 
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="142dp"
-        android:layout_height="167dp"
+        android:layout_width="181dp"
+        android:layout_height="169dp"
         android:layout_marginStart="40dp"
         android:background="#1703A9F4"
         android:text="Ticher"
@@ -21,12 +21,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818" />
+        app:layout_constraintVertical_bias="0.168" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="141dp"
-        android:layout_height="169dp"
+        android:layout_width="177dp"
+        android:layout_height="174dp"
         android:layout_marginEnd="40dp"
         android:background="#1203A9F4"
         android:text="Student"
@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.822" />
+        app:layout_constraintVertical_bias="0.17" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

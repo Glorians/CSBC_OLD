@@ -3,6 +3,9 @@
     <string name="activity_addSubject_Headline">Добавити предмет</string>
     <string name="activity_addSubject_SelectGroup">Виберіть группу</string>
     <string name="activity_addSubject_SelectSubgroup">Виберіть підгруппу</string>
-
-
+    <string name="help">help</string>
+    <string-array name="spinner_list_item_array">
+        <item>Teacher</item>
+        <item>Student</item>
+    </string-array>
 </resources>

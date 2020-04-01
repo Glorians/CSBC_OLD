@@ -1,15 +1,10 @@
 package com.geekhub_android.csbc.Activity
 
-
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import com.geekhub_android.csbc.R
 import kotlinx.android.synthetic.main.activity_main.*
-
-
 
 
 class MainActivity() : AppCompatActivity() {
@@ -19,22 +14,19 @@ class MainActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button1.setOnClickListener{
-            val intent = Intent (this, TeacherActivity::class.java)
+        button1.setOnClickListener {
+            val intent = Intent(this, TeacherActivity::class.java)
             startActivity(intent)
         }
-        button2.setOnClickListener{
-            val intent = Intent (this, StudentActivity::class.java)
+        button2.setOnClickListener {
+            val intent = Intent(this, StudentActivity::class.java)
             startActivity(intent)
         }
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.main,menu)
-        return true
 
     }
+
+
 }
 
 
